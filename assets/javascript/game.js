@@ -1,7 +1,7 @@
 var score = 0;
-var myNumber = 0;
-var wins = 1;
-var losses = 2;
+var chosenNumber = 0;
+var wins = 0;
+var losses = 0;
 
 var valueCrystal1 = 0;
 var valueCrystal2 = 0;
@@ -11,21 +11,21 @@ var valueCrystal4 = 0;
 // on every new game
 function newGame (){
     //chose a new random number that player has to match
-    myNumber = Math.floor(Math.random() * 100 +20);
+    chosenNumber = Math.floor(Math.random() * 10 +1);
     //give crystal 1 a new value
-    valueCrystal1 = Math.floor(Math.random() * 12 +1);
+    valueCrystal1 = Math.floor(Math.random() * 2 +1);
         //assign html element a value
         $("#crystal1").val(valueCrystal1);
     //give crystal 1 a new value
-    valueCrystal2 = Math.floor(Math.random() * 12 +1);
+    valueCrystal2 = Math.floor(Math.random() * 2 +1);
         //assign html element a value
         $("#crystal2").val(valueCrystal2);
     //give crystal 1 a new value
-    valueCrystal3 = Math.floor(Math.random() * 12 +1);
+    valueCrystal3 = Math.floor(Math.random() * 2 +1);
         //assign html element a value
         $("#crystal3").val(valueCrystal3);
     //give crystal 1 a new value
-    valueCrystal4 = Math.floor(Math.random() * 12 +1);
+    valueCrystal4 = Math.floor(Math.random() * 2 +1);
         //assign html element a value
         $("#crystal4").val(valueCrystal4);
     //sett the score to 0
@@ -36,37 +36,35 @@ function newGame (){
 
 newGame()
 
+// on click event to all .crystal elements on page 
+$(".crystal").on("click", function(){
+    // take the value of clicked .crystal element and store it in a variable crystalValue
+    var crystalValue = $(this).val();
+    //take the value of clicked element and make it an integer so that we can + to the score number
+    crystalValue = parseInt(crystalValue);
+    // add crystalValue to score
+   score += crystalValue;
+    //show score
+    $("#score").text(score);
+    //if score equals chosen number
+    if(chosenNumber === score){
+        wins++;
+        alert("you won")
+        newGame()
+    }
+
+});
+
+
 //show number of wins
 $("#wins").text(wins);
 //show number of losses 
 $("#loss").text(losses);
 //show chosen number
-$("#myNumber").text(myNumber);
-//show score
-$("#score").text(score);
+$("#chosenNumber").text(chosenNumber);
 
 
-
-$(".crystal").on("click", function(){
-    score += $(this).val();
-console.log(score);
-
-});
-/*$("#crystal2").on("click", function(){
-    alert("crystal2")
-});
-$("#crystal3").on("click", function(){
-    alert("crystal3")
-});
-$("#crystal4").on("click", function(){
-    alert("crystal4")
-});*/
-
-
-
-
-
-console.log(myNumber);
+console.log(chosenNumber);
 console.log(valueCrystal1);
 console.log(valueCrystal2);
 console.log(valueCrystal3);

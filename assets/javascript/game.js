@@ -12,26 +12,38 @@ var valueCrystal4 = 0;
 function newGame (){
     //chose a new random number that player has to match
     chosenNumber = Math.floor(Math.random() * 10 +1);
+    
     //give crystal 1 a new value
     valueCrystal1 = Math.floor(Math.random() * 2 +1);
         //assign html element a value
         $("#crystal1").val(valueCrystal1);
+
     //give crystal 1 a new value
     valueCrystal2 = Math.floor(Math.random() * 2 +1);
         //assign html element a value
         $("#crystal2").val(valueCrystal2);
-    //give crystal 1 a new value
+    
+        //give crystal 1 a new value
     valueCrystal3 = Math.floor(Math.random() * 2 +1);
         //assign html element a value
         $("#crystal3").val(valueCrystal3);
+    
     //give crystal 1 a new value
     valueCrystal4 = Math.floor(Math.random() * 2 +1);
         //assign html element a value
         $("#crystal4").val(valueCrystal4);
+    
     //sett the score to 0
     score = 0;
-   
-
+    
+    //show number of wins
+    $("#wins").text(wins);
+    
+    //show number of losses 
+    $("#loss").text(losses);
+    
+    //show chosen number
+    $("#chosenNumber").text(chosenNumber);
 }
 
 newGame()
@@ -44,28 +56,34 @@ $(".crystal").on("click", function(){
     crystalValue = parseInt(crystalValue);
     // add crystalValue to score
    score += crystalValue;
+    
+   
+    //if score equals chosen number
+    if( score === chosenNumber ){
+        //add 1 to wins
+        wins++;
+        alert("Bravo you won")
+        //start new game 
+        newGame(); 
+    }
+    else if (score > chosenNumber){
+        //add one to losses
+        losses++;
+        alert("you lost");
+        //start new game
+        newGame();
+    }
+    
     //show score
     $("#score").text(score);
-    //if score equals chosen number
-    if(chosenNumber === score){
-        wins++;
-        alert("you won")
-        newGame()
-    }
-
 });
 
 
-//show number of wins
-$("#wins").text(wins);
-//show number of losses 
-$("#loss").text(losses);
-//show chosen number
-$("#chosenNumber").text(chosenNumber);
 
 
-console.log(chosenNumber);
-console.log(valueCrystal1);
-console.log(valueCrystal2);
-console.log(valueCrystal3);
-console.log(valueCrystal4);
+
+console.log("computers choise " + chosenNumber);
+console.log("value crystal #1 " + valueCrystal1);
+console.log("value crystal #2 " + valueCrystal2);
+console.log("value crystal #3 " + valueCrystal3);
+console.log("value crystal #4 " + valueCrystal4);

@@ -7,29 +7,33 @@ var valueCrystal1 = 0;
 var valueCrystal2 = 0;
 var valueCrystal3 = 0;
 var valueCrystal4 = 0;
+var audio = new Audio('Tomb_Raider.mp3');
 
 // on every new game
 function newGame (){
+
+    //start soundtrack
+    //audio.play();
     //chose a new random number that player has to match
-    chosenNumber = Math.floor(Math.random() * 10 +1);
+    chosenNumber = Math.floor(Math.random() * 101 +19);
     
     //give crystal 1 a new value
-    valueCrystal1 = Math.floor(Math.random() * 2 +1);
+    valueCrystal1 = Math.floor(Math.random() * 12 +1);
         //assign html element a value
         $("#crystal1").val(valueCrystal1);
 
     //give crystal 1 a new value
-    valueCrystal2 = Math.floor(Math.random() * 2 +1);
+    valueCrystal2 = Math.floor(Math.random() * 12 +1);
         //assign html element a value
         $("#crystal2").val(valueCrystal2);
     
         //give crystal 1 a new value
-    valueCrystal3 = Math.floor(Math.random() * 2 +1);
+    valueCrystal3 = Math.floor(Math.random() * 12 +1);
         //assign html element a value
         $("#crystal3").val(valueCrystal3);
     
     //give crystal 1 a new value
-    valueCrystal4 = Math.floor(Math.random() * 2 +1);
+    valueCrystal4 = Math.floor(Math.random() * 12 +1);
         //assign html element a value
         $("#crystal4").val(valueCrystal4);
     

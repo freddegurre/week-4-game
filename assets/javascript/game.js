@@ -13,7 +13,7 @@ var audio = new Audio('Tomb_Raider.mp3');
 function newGame (){
 
     //start soundtrack
-    //audio.play();
+    audio.play();
     //chose a new random number that player has to match
     chosenNumber = Math.floor(Math.random() * 101 +19);
     
@@ -66,28 +66,36 @@ $(".crystal").on("click", function(){
     if( score === chosenNumber ){
         //add 1 to wins
         wins++;
+        //allert user after 0.5 seconds so user can see they won
+        setTimeout(function(){
         alert("Bravo you won")
+        }, 500);
         //start new game 
-        newGame(); 
+        newGame();
     }
     else if (score > chosenNumber){
         //add one to losses
         losses++;
+        //allert after 0.5 seconds so user can see they lost
+        setTimeout(function(){
         alert("you lost");
+        }, 500);
         //start new game
         newGame();
     }
     
     //show score
     $("#score").text(score);
+
+
 });
-
-
-
-
 
 console.log("computers choise " + chosenNumber);
 console.log("value crystal #1 " + valueCrystal1);
 console.log("value crystal #2 " + valueCrystal2);
 console.log("value crystal #3 " + valueCrystal3);
 console.log("value crystal #4 " + valueCrystal4);
+
+
+
+
